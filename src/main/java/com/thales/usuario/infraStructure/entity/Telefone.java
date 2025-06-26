@@ -1,10 +1,7 @@
 package com.thales.usuario.infraStructure.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
@@ -12,6 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity //Aponta para o spring que é uma tabela do banco de dados
 @Table(name = "telefone") // indicar o nome da tabela
+@Builder
 public class Telefone {
 
     @Id
