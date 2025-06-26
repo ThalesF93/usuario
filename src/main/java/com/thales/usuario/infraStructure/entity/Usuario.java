@@ -1,10 +1,7 @@
 package com.thales.usuario.infraStructure.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -17,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity //Aponta para o spring que é uma tabela do banco de dados
 @Table(name = "usuario") // indicar o nome da tabela
+@Builder
 public class Usuario implements UserDetails {
 
     @Id
