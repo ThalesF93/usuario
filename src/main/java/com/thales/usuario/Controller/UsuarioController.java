@@ -1,8 +1,9 @@
 package com.thales.usuario.Controller;
 
 import com.thales.usuario.Business.UsuarioService;
+import com.thales.usuario.Business.dto.EnderecoDTO;
+import com.thales.usuario.Business.dto.TelefoneDTO;
 import com.thales.usuario.Business.dto.UsuarioDTO;
-import com.thales.usuario.infraStructure.entity.Usuario;
 import com.thales.usuario.infraStructure.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -36,7 +37,7 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public ResponseEntity<Usuario> buscaUsuarioPorEmail(@RequestParam("email")String email){
+    public ResponseEntity<UsuarioDTO> buscaUsuarioPorEmail(@RequestParam("email") String email){
         return ResponseEntity.ok(usuarioService.buscarUsuarioPorEmail(email));
     }
 
@@ -51,6 +52,20 @@ public class UsuarioController {
                                                            @RequestHeader("Authorization") String token){
 
         return ResponseEntity.ok(usuarioService.atualizaDadosUsuario(token, dto));
+    }
+
+    @PutMapping("/endereco")
+    public ResponseEntity<EnderecoDTO> atualizaEndereco(@RequestBody EnderecoDTO dto,
+                                                        @RequestParam("id") Long id){
+        return ResponseEntity.ok(usuarioService.atualizaEndereco(id,dto));
+
+    }
+
+    @PutMapping("/telefone")
+    public ResponseEntity<TelefoneDTO> atualizaTelefone(@RequestBody TelefoneDTO dto,
+                                                        @RequestParam("id") Long id){
+        return ResponseEntity.ok(usuarioService.atualizaTelefone(id,dto));
+
     }
 
 }
